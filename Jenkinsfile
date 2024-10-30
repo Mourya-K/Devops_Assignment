@@ -25,11 +25,6 @@ pipeline {
                 sh 'node tests/example.test.js'
             }
         }
-        // stage('Run Selenium Tests') {
-        //     steps {
-        //         sh 'mvn test -DfailIfNoTests=false'
-        //     }
-        // }
     }
     post {
         success {

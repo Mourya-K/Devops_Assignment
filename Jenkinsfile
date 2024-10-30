@@ -20,6 +20,11 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Run Application') {
+            steps {
+                sh 'node index.js &'
+            }
+        }
         stage('Run Selenium Tests') {
             steps {
                 sh 'mvn test -DfailIfNoTests=false'

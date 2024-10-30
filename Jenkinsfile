@@ -15,14 +15,14 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Build with Maven') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
         stage('Run Application') {
             steps {
                 sh 'node index.js &'
+            }
+        }
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean package'
             }
         }
         stage('Run Selenium Tests') {

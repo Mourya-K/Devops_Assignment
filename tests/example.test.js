@@ -1,28 +1,13 @@
-// tests/example.test.js
 const { Builder, By, until } = require('selenium-webdriver');
 
-async function exampleTest() {
-    // Initialize the Chrome driver
+(async function example() {
     let driver = await new Builder().forBrowser('chrome').build();
-
     try {
-        // Navigate to your app
         await driver.get('http://localhost:2020');
-
-        // Check if the title is correct
+        await driver.wait(until.titleIs('Hello, Docker with Node.js!'), 10000); // wait for 10 seconds
         let title = await driver.getTitle();
-        console.log('Title is:', title); // Log the title
-
-        // Assertions can be added here (for example, using a testing framework)
-        if (title === 'Hello, Docker with Node.js!') {
-            console.log('Test passed!');
-        } else {
-            console.log('Test failed!');
-        }
+        console.log(title); // Should print "Hello, Docker with Node.js!"
     } finally {
-        // Quit the driver
         await driver.quit();
     }
-}
-
-exampleTest();
+})();

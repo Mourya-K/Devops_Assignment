@@ -15,6 +15,11 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Start Application') {
+            steps {
+                sh 'nohup node index.js &'
+            }
+        }
         stage('Build with Maven') {
             steps {
                 sh 'mvn clean package'

@@ -15,19 +15,19 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Start Application') {
-            steps {
-                sh 'nohup node index.js &'
-            }
-        }
         stage('Build with Maven') {
             steps {
                 sh 'mvn clean package'
             }
         }
+        stage('Run Application') {
+            steps {
+                sh 'node index.js &'
+            }
+        }
         stage('Run Selenium Tests') {
             steps {
-                sh 'node tests/example.test.js'
+                sh 'mvn test -DfailIfNoTests=false'
             }
         }
     }

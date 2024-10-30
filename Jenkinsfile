@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        nodejs 'NodeNode' // Name of NodeJS in Jenkins
-        maven 'Maven'
+        nodejs 'NodeNode' // Matches the name set in Jenkins for NodeJS
+        maven 'Maven'     // Matches the name set in Jenkins for Maven
     }
     stages {
         stage('Checkout') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Run Selenium Tests') {
             steps {
-                sh 'mvn test -Dtest=YourSeleniumTestClass'
+                sh 'mvn test -DfailIfNoTests=false'
             }
         }
     }
